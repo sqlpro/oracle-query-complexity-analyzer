@@ -158,24 +158,32 @@ done
 
 복잡도 점수는 0-10 척도로 표시되며, 다음과 같이 해석할 수 있습니다:
 
-- **0-1**: 매우 간단 (Very Simple) - PostgreSQL로 직접 변환 가능
-- **1-3**: 간단 (Simple) - 약간의 수정만 필요
-- **3-5**: 중간 (Moderate) - 일부 재작성 필요
-- **5-7**: 복잡 (Complex) - 상당한 재작성 필요
-- **7-9**: 매우 복잡 (Very Complex) - 대부분 재작성 필요
-- **9-10**: 극도로 복잡 (Extremely Complex) - 완전한 재설계 필요
+| 점수 범위 | 복잡도 레벨 | 설명 |
+|----------|------------|------|
+| 0-1      | 매우 간단 (Very Simple) | PostgreSQL로 직접 변환 가능 |
+| 1-3      | 간단 (Simple) | 약간의 수정만 필요 |
+| 3-5      | 중간 (Moderate) | 일부 재작성 필요 |
+| 5-7      | 복잡 (Complex) | 상당한 재작성 필요 |
+| 7-9      | 매우 복잡 (Very Complex) | 대부분 재작성 필요 |
+| 9-10     | 극도로 복잡 (Extremely Complex) | 완전한 재설계 필요 |
+
+복잡도 점수는 여러 요소를 고려하여 계산됩니다. 자세한 계산 방법은 [복잡도 계산 공식](complexity_formula.md)을 참조하세요.
 
 ### 세부 평가 요소
 
 각 세부 평가 요소는 특정 측면의 복잡도를 나타냅니다:
 
-- **structural_complexity**: 쿼리의 구조적 복잡성
-- **oracle_specific_features**: Oracle 특화 기능 사용 정도
-- **functions_expressions**: 함수 및 표현식 복잡도
-- **data_volume**: 데이터 처리 볼륨 추정
-- **execution_complexity**: 실행 계획 복잡성 추정
-- **postgres_conversion**: PostgreSQL 변환 난이도
-- **dynamic_complexity**: MyBatis 동적 쿼리 복잡도 (MyBatis 쿼리만 해당)
+| 평가 요소 | 최대 점수 | 설명 |
+|----------|---------|------|
+| **structural_complexity** | 3.5점 | 쿼리의 구조적 복잡성 (조인, 서브쿼리, CTE 등) |
+| **oracle_specific_features** | 3.0점 | Oracle 특화 기능 사용 정도 (CONNECT BY, 분석 함수 등) |
+| **functions_expressions** | 2.0점 | 함수 및 표현식 복잡도 (집계 함수, CASE 등) |
+| **data_volume** | 2.0점 | 데이터 처리 볼륨 추정 (쿼리 길이 기반) |
+| **execution_complexity** | 1.5점 | 실행 계획 복잡성 추정 (정렬, 그룹화 등) |
+| **postgres_conversion** | 2.0점 | PostgreSQL 변환 난이도 (Oracle 특화 문법) |
+| **dynamic_complexity** | 3.0점 | MyBatis 동적 쿼리 복잡도 (MyBatis 쿼리만 해당) |
+
+이러한 요소들의 점수를 합산하고 정규화하여 최종 복잡도 점수가 계산됩니다. 자세한 계산 방법은 [복잡도 계산 공식](complexity_formula.md)을 참조하세요.
 
 ### 보고서 형식
 
