@@ -17,8 +17,8 @@ Oracle SQL 쿼리와 MyBatis 동적 쿼리의 복잡도를 분석하여 Oracle�
 
 ```bash
 # 저장소 클론
-git clone https://github.com/yourusername/oracle-to-postgres-analyzer.git
-cd oracle-to-postgres-analyzer
+git clone https://github.com/sqlpro/oracle-query-complexity-analyzer.git
+cd oracle-query-complexity-analyzer
 
 # 필요한 패키지 설치 (자동으로 python/python3 감지)
 make install
@@ -58,13 +58,13 @@ make analyze-samples
 
 ```bash
 # 일반 SQL 쿼리 분석
-python -m oracle_to_postgres_analyzer.src.query_complexity_analyzer
+python -m src.query_complexity_analyzer
 
 # MyBatis 동적 쿼리 분석
-python -m oracle_to_postgres_analyzer.src.mybatis_query_analyzer
+python -m src.mybatis_query_analyzer
 
 # 디렉토리 내 모든 SQL 파일 분석
-python -m oracle_to_postgres_analyzer.src.sql_directory_analyzer /path/to/sql/files output_report.md
+python -m src.sql_directory_analyzer /path/to/sql/files output_report.md
 ```
 
 ## 주요 기능
@@ -136,7 +136,7 @@ oracle_to_postgres_analyzer/
 ├── samples/                   # 샘플 SQL 파일
 │   ├── sample_01.sql          # 기본 MyBatis 동적 쿼리 샘플
 │   ├── sample_02.sql          # 일반 Oracle SQL 쿼리 샘플
-│   └── complex_mybatis_query.sql  # 복잡한 MyBatis 동적 쿼리 샘플
+│   └── sample_03.sql          # 복잡한 MyBatis 동적 쿼리 샘플
 └── docs/                      # 문서
     ├── usage_guide.md         # 상세 사용 가이드
     └── migration_guide.md     # Oracle에서 PostgreSQL로의 마이그레이션 가이드
