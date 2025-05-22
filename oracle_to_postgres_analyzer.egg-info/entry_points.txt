@@ -1,0 +1,5 @@
+[console_scripts]
+analyze-mybatis = oracle_to_postgres_analyzer.src.mybatis_query_analyzer:main
+analyze-sql = oracle_to_postgres_analyzer.src.query_complexity_analyzer:main
+analyze-sql-dir = oracle_to_postgres_analyzer.src.sql_directory_analyzer:main
+
